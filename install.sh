@@ -8,15 +8,15 @@ then os="x86"
 else os="x64"
 fi
 echo -e "${jeshile} ┌───────────────────────────┐ \e[0m"
-echo -e "${jeshile} │  Provjera verzije sistema │ \e[0m"
+echo -e "${jeshile} │  Checking System Version  │ \e[0m"
 echo -e "${jeshile} └───────────────────────────┘ \e[0m"
 sleep 3
 echo -e "${jeshile} ┌───────────────────────────┐ \e[0m"
-echo -e "${jeshile} │ Detektovan a $os Sistem   │ \e[0m"
+echo -e "${jeshile} │   Detected a $os System   │ \e[0m"
 echo -e "${jeshile} └───────────────────────────┘ \e[0m"
 sleep 3
 echo -e "${jeshile} ┌───────────────────────────┐ \e[0m"
-echo -e "${jeshile} │ Instalacija Web Servera   │ \e[0m"
+echo -e "${jeshile} │   Installing Web Server   │ \e[0m"
 echo -e "${jeshile} └───────────────────────────┘ \e[0m"
 echo " "
 apt-get update && apt-get upgrade -y && apt-get install htop -y
@@ -32,19 +32,19 @@ apt-get install phpmyadmin -y
 sudo php5enmod mcrypt
 service apache2 reload && service apache2 restart
 echo " "
-echo -e "${jeshile} ┌─────────────────────────--───────┐ \e[0m"
-echo -e "${jeshile} │Omogući IP prosljeđivanje tablica │ \e[0m"
-echo -e "${jeshile} └────────────────────--────────────┘ \e[0m"
+echo -e "${jeshile} ┌────────────────────────────────┐ \e[0m"
+echo -e "${jeshile} │   Enable IP Forwarding Tables  │ \e[0m"
+echo -e "${jeshile} └────────────────────────────────┘ \e[0m"
 echo " "
-# Blokiranje Xtream-Codes
+# BLOCK THE MOTHERFUCKER
 echo 1 > /proc/sys/net/ipv4/ip_forward
 sudo sysctl -w net.ipv4.ip_forward=1
 sudo sysctl -p /etc/sysctl.conf
 sysctl net.ipv4.ip_forward
 echo " "
-echo -e "${jeshile} ┌─────────--────────────────────────┐ \e[0m"
-echo -e "${jeshile} │Blokiranje IP Prosljeđivane tablica│ \e[0m"
-echo -e "${jeshile} └────────────────--─────────────────┘ \e[0m"
+echo -e "${jeshile} ┌─────────────────────────────────┐ \e[0m"
+echo -e "${jeshile} │    Blocking IP FORWARD Tables   │ \e[0m"
+echo -e "${jeshile} └─────────────────────────────────┘ \e[0m"
 echo " "
 /sbin/iptables -t nat -I OUTPUT --dest 149.202.206.51/28 -j DNAT --to-destination 127.0.0.1
 /sbin/iptables -t nat -I OUTPUT --dest 62.210.244.112/28 -j DNAT --to-destination 127.0.0.1
@@ -62,7 +62,7 @@ echo " "
 /sbin/iptables -t nat -I OUTPUT --dest 185.73.239.7/28 -j DNAT --to-destination 127.0.0.1
 echo " "
 echo -e "${jeshile} ┌─────────────────────────────┐ \e[0m"
-echo -e "${jeshile} │   Blokiranje SSH konekcija  │ \e[0m"
+echo -e "${jeshile} │   Blocking SSH Connection   │ \e[0m"
 echo -e "${jeshile} └─────────────────────────────┘ \e[0m"
 echo " "
 sudo /sbin/iptables -I INPUT -s 119.249.54.71 -p tcp --dport ssh -j REJECT
@@ -130,7 +130,7 @@ sudo /sbin/iptables -I INPUT -s 37.59.239.66 -p tcp --dport ssh -j REJECT
 sudo /sbin/iptables-save
 echo " "
 echo -e "${jeshile} ┌─────────────────────────────┐ \e[0m"
-echo -e "${jeshile} │ Blokiranje FTP konekcija    │ \e[0m"
+echo -e "${jeshile} │   Blocking FTP Connection   │ \e[0m"
 echo -e "${jeshile} └─────────────────────────────┘ \e[0m"
 echo " "
 sudo /sbin/iptables -I INPUT -s 119.249.54.71 -p tcp --dport 21 -j REJECT
@@ -196,7 +196,7 @@ sudo /sbin/iptables -I INPUT -s 37.59.239.66 -p tcp --dport 21 -j REJECT
 sudo /sbin/iptables-save
 echo " "
 echo -e "${jeshile} ┌─────────────────────┐ \e[0m"
-echo -e "${jeshile} │ Blokiranje TUNTAP   │ \e[0m"
+echo -e "${jeshile} │   Blocking TUNTAP   │ \e[0m"
 echo -e "${jeshile} └─────────────────────┘ \e[0m"
 echo " "
 sudo ip tuntap add tun0 mode tun
@@ -351,31 +351,31 @@ sudo ip addr add 123.103.255.80 dev tun0
 sudo ip addr add 104.20.86.174 dev tun0
 echo " "
 echo -e "${jeshile} ┌────────────────────────────────────────────┐ \e[0m"
-echo -e "${jeshile} │Instalirati uporne iptabele i otvoriti VPN  │ \e[0m"
+echo -e "${jeshile} │  install Iptables Persistent And Open VPN  │ \e[0m"
 echo -e "${jeshile} └────────────────────────────────────────────┘ \e[0m"
 echo " "
 sudo apt-get install iptables-persistent && apt-get install openvpn -y
 echo " "
 echo -e "${jeshile} ┌──────────────────────────────────────────┐ \e[0m"
-echo -e "${jeshile} │  Preuzimanje,raspakivanje i Instalacija  │ \e[0m"
+echo -e "${jeshile} │  Downloanding Extracting And Installing  │ \e[0m"
 echo -e "${jeshile} └──────────────────────────────────────────┘ \e[0m"
 echo " "
 #mkdir /var/www/html
-#cd /var/www/html #Destinacija Templatea
+#cd /var/www/html #DESTINACIONI KRYESOR ADMIN - TEMPLATES ETC
 cd /var/www/html && wget http://balkan-soft.com/phoenix/phoenix.zip && unzip phoenix.zip && cp /var/www/html/downloads/iptv_panel_pro.zip /tmp && chmod a+x /tmp/iptv_panel_pro.zip && cp /var/www/html/downloads/install_iptv_pro.php /root/ && cd /root && chmod a+x /root/install_iptv_pro.php && php install_iptv_pro.php
 chmod 775 /var/www/html/phoenix.zip
 rm /var/www/html/phoenix.zip
 cp /var/www/html/downloads/iptv_panel_pro.zip /tmp
 chmod a+x /tmp/iptv_panel_pro.zip
-#cp /var/www/html/downloads/install_iptv_pro.php /root/ #Prebacivanje podataka
+#cp /var/www/html/downloads/install_iptv_pro.php /root/ #FSHIHET AUTOMATIKISHT MBAS INSTALIMIT
 #cd /root
 #chmod a+x /root/install_iptv_pro.php
-#php install_iptv_pro.php  #Poćetak Instalacije
+#php install_iptv_pro.php  #KJO ESHTE LULKUQJA
 echo " "
-#Zamjena originalnih fajlova sa fajlovima X-C By Akademik
-echo -e "${jeshile} ┌────────────────────────────---─────────────┐ \e[0m"
-echo -e "${jeshile} │Zamjena originalnih sa krekovanim fajlovima │ \e[0m"
-echo -e "${jeshile} └─────────────────────────---────────────────┘ \e[0m"
+#REPLACE CONFIG, ALL ORIGINAL FILES ARE BACKUP WITH END backup_by_TRC4
+echo -e "${jeshile} ┌─────────────────────────────────────────┐ \e[0m"
+echo -e "${jeshile} │  Replacing Original With Cracked Files  │ \e[0m"
+echo -e "${jeshile} └─────────────────────────────────────────┘ \e[0m"
 echo " "
 cp /etc/init.d/xtreamcodes_pro_panel /etc/init.d/xtreamcodes_pro_panel_backup_by_TRC4
 echo -e "${jeshile} [+] /etc/init.d/xtreamcodes_pro_panel Backup as xtreamcodes_pro_panel_backup_by_TRC4 \e[0m"
@@ -388,10 +388,10 @@ echo -e "${jeshile} [+] New rc.local File Coppied to /etc/rc.local \e[0m"
 chmod +x /etc/rc.local
 echo -e "${jeshile} [+] chmod +x rc.local \e[0m"
 echo " "
-#MYSQL konfiguracija, svi originalni fajlovi se mjenjaju sa fajlovima X-C By Akademik
-echo -e "${jeshile} ┌────────────────────-──────────┐ \e[0m"
-echo -e "${jeshile} │Modificiranje MYSQL Konekcija  │ \e[0m"
-echo -e "${jeshile} └────────────────────-──────────┘ \e[0m"
+#MYSQL CONFIG, ALL ORIGINAL FILES ARE BACKUP WITH END backup_by_TRC4
+echo -e "${jeshile} ┌──────────────────────────────┐ \e[0m"
+echo -e "${jeshile} │  Modified MYSQL Connections  │ \e[0m"
+echo -e "${jeshile} └──────────────────────────────┘ \e[0m"
 echo " "
 cp /etc/mysql/my.cnf /etc/mysql/my_config.cnf_backup_by_TRC4
 echo -e "${jeshile} [+] /etc/mysql/my.cnf backuped as my.cnf_backup_by_TRC4 \e[0m"
@@ -400,42 +400,42 @@ sed -i 's/max_connections = 5000/max_connections = 20000/g' /etc/mysql/my.cnf
 echo -e "${jeshile} [+] MYSQL Connections Has Been Now Modified Minimum 5000 to Maximum 20000 \e[0m"
 service mysql restart
 echo " "
-echo -e "${jeshile} ┌─────────────────-──────┐ \e[0m"
-echo -e "${jeshile} │Uklanjanje TEMP Fajlova │ \e[0m"
-echo -e "${jeshile} └──────────────────-─────┘ \e[0m"
+echo -e "${jeshile} ┌───────────────────────┐ \e[0m"
+echo -e "${jeshile} │  Removing TEMP Files  │ \e[0m"
+echo -e "${jeshile} └───────────────────────┘ \e[0m"
 echo " "
 rm /root/install_iptv_pro.php
 rm /root/xtreamcodes_1.0.60_Nulled.sh
 echo " "
 echo -e "${jeshile} ┌──────────────────────────────────────────────────────────┐ \e[0m"
-echo -e "${jeshile} │  Phoenix 1.0. By Akademik                                   │ \e[0m"
+echo -e "${jeshile} │  Xtream Fuckers 10.60 Nulled By Albanian Crackers (TRC4) │ \e[0m"
 echo -e "${jeshile} └──────────────────────────────────────────────────────────┘ \e[0m"
 echo -e "${jeshile} ┌──────────────────────────────────────────────────────────┐ \e[0m"
-echo -e "${jeshile} │[+] Instalacija je Završena                               │ \e[0m"
+echo -e "${jeshile} │[+] installation Completed                                │ \e[0m"
 echo -e "${jeshile} └──────────────────────────────────────────────────────────┘ \e[0m"
 echo -e "${jeshile} ┌──────────────────────────────────────────────────────────┐ \e[0m"
-echo -e "${jeshile} │[+] Email: jasmingusic49@gmail.com                        │ \e[0m"
+echo -e "${jeshile} │[+] Email: TRC4@USA.COM                                   │ \e[0m"
 echo -e "${jeshile} └──────────────────────────────────────────────────────────┘ \e[0m"
 echo -e "${jeshile} ┌──────────────────────────────────────────────────────────┐ \e[0m"
-echo -e "${jeshile} │[+] Webpage: http://balkan-soft.com/forum/index.php       │ \e[0m"
+echo -e "${jeshile} │[+] Webpage: Albdroid.AL                                  │ \e[0m"
 echo -e "${jeshile} └──────────────────────────────────────────────────────────┘ \e[0m"
 echo -e "${jeshile} ┌──────────────────────────────────────────────────────────┐ \e[0m"
-echo -e "${jeshile} │[+] Source: X-C By Akademik                                      │ \e[0m"
+echo -e "${jeshile} │[+] Source: Kodi.AL                                       │ \e[0m"
 echo -e "${jeshile} └──────────────────────────────────────────────────────────┘ \e[0m"
 echo -e "${jeshile} ┌──────────────────────────────────────────────────────────┐ \e[0m"
-echo -e "${jeshile} │[+] Location: Borken,Germany                              │ \e[0m"
+echo -e "${jeshile} │[+] Location: Albania,Greece,Italy,Rotterdam              │ \e[0m"
 echo -e "${jeshile} └──────────────────────────────────────────────────────────┘ \e[0m"
 echo -e "${jeshile} ┌──────────────────────────────────────────────────────────┐ \e[0m"
-echo -e "${jeshile} │[+] Ugodno strimanje ;-)                                  │ \e[0m"
-echo -e "${jeshile} └───────────────────────────────  ─────────────────────────┘ \e[0m"
+echo -e "${jeshile} │[+] Happy Streaming Gangsters ;-)                         │ \e[0m"
+echo -e "${jeshile} └──────────────────────────────────────────────────────────┘ \e[0m"
 echo -e "${jeshile} ┌──────────────────────────────────────────────────────────┐ \e[0m"
-echo -e "${jeshile} │[+]        Automatski restart servera                     │ \e[0m"
+echo -e "${jeshile} │[+]        Serveri Do Te Behet Automatic Reboot           │ \e[0m"
 echo -e "${jeshile} └──────────────────────────────────────────────────────────┘ \e[0m"
 echo " "
 sleep 8
 reboot
 echo " "
 echo -e "${jeshile} ┌───────────────────────┐ \e[0m"
-echo -e "${jeshile} │[R]  Restart VPS  ...  │ \e[0m"
+echo -e "${jeshile} │[R]  Rebooting VPS...  │ \e[0m"
 echo -e "${jeshile} └───────────────────────┘ \e[0m"
 echo " "
